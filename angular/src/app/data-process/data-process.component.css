@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+/* MainDiv */
+
+.mainDiv {
+    width: 100%;
+    padding: 30px 50px;
+    display: none;
+}
+
+#mainDiv1 {
+    display: block;
+}
+
+#mainDiv2,
+#mainDiv3 {
+    display: none;
+}
+
+p {
+    letter-spacing: 1;
+    color: #929294;
+    margin-top: -10px;
+}
+
+.upload {
+    display: flex;
+    padding: 20px;
+}
+
+input[type="file"] {
+    margin-top: 20px;
+    margin-left: 30px;
+    cursor: pointer;
+    outline: none;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.upload i,
+.fa-arrow-right {
+    cursor: pointer;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 50%;
+    color: #fff;
+    text-shadow: 0 0 5px #000;
+    background: rgb(96, 211, 247);
+}
+
+.uploadIconHolder:before,
+.nextIconHolder:before {
+    z-index: -2;
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgb(96, 211, 247);
+    animation: grow 1s 6;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+/* Table */
+
+table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 20px auto;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 1px 1px 10px rgb(168, 168, 168);
+}
+
+table tr,
+table td,
+table th {
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+table td,
+table th {
+    width: 100%;
+    padding: 10px;
+}
+
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #fff;
+}
+
+table th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60px;
+    text-align: left;
+    background-color: #d9dadd;
+    font-family: "candara";
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+}

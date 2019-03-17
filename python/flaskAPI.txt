@@ -1,0 +1,60 @@
+from flask import Flask, jsonify, request
+from bson.json_util import dumps
+from flask_cors import CORS
+import pandas as pd
+import json
+from pandas.io.json import json_normalize
+import xlrd
+
+
+app = Flask(__name__)
+CORS(app)
+
+@app.route('/sendFilePath', methods=['POST'])
+def sendFilePath():
+    try:
+        data = request.json
+        data = data["path"].split('fakepath\\')
+        path = 'C:\\Users\\Aravind\\Desktop\\' + data[1]
+        train = pd.read_excel(path)
+        r = train.shape[0]
+        df = train.drop(train.loc[:, train.isnull().sum() > r / 2], axis=1)
+        return jsonify({'input': train.to_json(orient='split'),'output1':df.to_json(orient='split')})
+
+    except Exception as e:
+        print(str(e))
+
+
+@app.route('/step2', methods=['POST'])
+def step2():
+    try:
+        data = request.json
+        df = pd.DataFrame.from_dict(json_normalize(data), orient='columns')
+        r = df.shape[1]
+        s = df.dropna(axis=0, how=None, thresh=r / 2, subset=None, inplace=False)
+        return jsonify({"output2":s.to_json(orient='columns')})
+
+
+    except Exception as e:
+        print(str(e))
+
+
+@app.route('/step3', methods=['POST'])
+def step3():
+    try:
+        data = request.json
+        print(data)
+        df = pd.DataFrame.from_dict(json_normalize(data), orient='columns')
+        print(df)
+        k = df._get_numeric_data()
+        print(k)
+        return jsonify({"output3":k.to_json(orient='split')})
+
+
+    except Exception as e:
+        print(str(e))
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=9080)

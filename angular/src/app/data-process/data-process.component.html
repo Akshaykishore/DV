@@ -1,0 +1,57 @@
+<div class="container">
+
+  <div class="mainDiv" id="mainDiv1">
+    <h1>Choose your file</h1>
+    <hr>
+    <div class="upload">
+      <div class="uploadIconHolder">
+        <i class="fa fa-upload" aria-hidden="true" (click)="upload()"></i>
+      </div>
+      <input type="file" #file>
+      <div *ngIf="uploaded" class="nextIconHolder">
+        <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess1(2)"></i>
+      </div>
+    </div>
+    <h1 *ngIf="dataset">Original DataSet</h1>
+    <table *ngIf="dataset">
+      <th *ngFor="let heading of dataset.columns">{{heading}}</th>
+      <tr *ngFor="let data of dataset.data">
+        <td *ngFor="let d of data">{{d || "NaN"}}</td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="mainDiv" id="mainDiv2">
+    <div *ngIf="dataset" class="flex">
+      <h1>Step 1</h1>
+      <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess2(3)"></i>
+    </div>
+    <hr>
+    <p>Removing columns with less information</p>
+    <table *ngIf="output1" #table>
+      <th *ngFor="let heading of output1.columns">{{heading}}</th>
+      <tr *ngFor="let data of output1.data">
+        <td *ngFor="let d of data">{{d || "NaN"}}</td>
+      </tr>
+    </table>
+    <input *ngIf="output" type="button" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel()">
+  </div>
+
+  <div class="mainDiv3" id="mainDiv3">
+    <div class="flex">
+      <h1>Step 2</h1>
+      <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess3(4)"></i>
+    </div>
+    <hr>
+    <p>Removing unnecessary Rows</p>
+    <table *ngIf="output2" #table>
+      <th *ngFor="let heading of output2.columns[0]">{{heading}}</th>
+      <tr *ngFor="let data of output2.data[0]">
+        <td *ngFor="let d of data">{{d || "NaN"}}</td>
+      </tr>
+    </table>
+    <input *ngIf="output2" type="button" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel()">
+  </div>
+
+</div>
