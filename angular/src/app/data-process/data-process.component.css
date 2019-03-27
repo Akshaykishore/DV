@@ -125,3 +125,20 @@ table th {
     text-transform: uppercase;
     text-align: center;
 }
+.pos{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.button{
+    margin-top: 15px;
+    padding: 2px 5px;
+    width: 100px;
+    height: 40px;
+    border: 2px solid rgb(17, 103, 153);
+    transition: .5s;
+}
+.button:hover{
+    background: rgb(89, 202, 255);
+}

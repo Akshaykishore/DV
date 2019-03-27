@@ -4,39 +4,9 @@
     border: none;
     outline: none;
     text-decoration: none;
-    --main-primary-bg-color: linear-gradient(#dfe3ee, #f7f7f7);
-    --main-secondary-bg-color: #fff;
-    --main-header-bg-color: rgb(105, 147, 238);
-    --div-border-color: #bdbbbb;
-    --div-shadow-color: #bdbbbb;
-    --text-primary-color: #000;
-    --text-secondary-color: #fff;
-    --button-bg-color: rgb(105, 147, 238);
-    --button-hover-color: rgb(131, 167, 245);
-    --button-shadow-color: rgb(80, 113, 184);
-    --button-disabled-color: rgb(85, 99, 129);
 }
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow-x: hidden;
-}
-
-.button:not(:disabled) {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: .3s;
-    color: var(--text-secondary-color);
-    background: var(--button-bg-color);
-    box-shadow: inset 1px 1px 15px var(--button-shadow-color);
-}
-
-.button:disabled {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: .3s;
-    color: var(--text-secondary-color);
-    background-color: var(--button-disabled-color);
 }

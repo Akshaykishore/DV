@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { DataProcessComponent } from './data-process/data-process.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DataProcessComponent
+    DataProcessComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

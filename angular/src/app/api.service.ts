@@ -25,9 +25,20 @@ export class ApiService {
   dataProcess2(dataSet) {
     return this.http.post(this.host + "step2", dataSet, this.httpOptions);
   }
-  
-  dataProcess3(dataSet) {
-    return this.http.post(this.host + "step3", dataSet, this.httpOptions);
+
+  dataProcess3(name) {
+    console.log(name);
+    let obj = {
+      name: name
+    }
+    return this.http.post(this.host + "step3", obj, this.httpOptions);
   }
-  
+  dataProcess4(name) {
+    console.log(name);
+    let obj = {
+      name: name
+    }
+    return this.http.post(this.host + "step4", obj, this.httpOptions);
+  }
+
 }

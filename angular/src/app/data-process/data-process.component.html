@@ -1,19 +1,21 @@
 <div class="container">
-
-  <div class="mainDiv" id="mainDiv1">
-    <h1>Choose your file</h1>
+  <app-loader *ngIf="loading"></app-loader>
+  <div class="mainDiv animated fadeIn" id="mainDiv1">
+    <div class="flex">
+      <h1>Choose your file</h1> 
+      <input type="button" *ngIf="uploaded" value="Next" class="button" (click)="dataProcess1(2)">
+      <!-- <i *ngIf="uploaded" class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess1(2)"></i> -->
+    </div>
     <hr>
     <div class="upload">
       <div class="uploadIconHolder">
         <i class="fa fa-upload" aria-hidden="true" (click)="upload()"></i>
       </div>
       <input type="file" #file>
-      <div *ngIf="uploaded" class="nextIconHolder">
-        <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess1(2)"></i>
-      </div>
+
     </div>
     <h1 *ngIf="dataset">Original DataSet</h1>
-    <table *ngIf="dataset">
+    <table class="animated zoomIn" *ngIf="dataset">
       <th *ngFor="let heading of dataset.columns">{{heading}}</th>
       <tr *ngFor="let data of dataset.data">
         <td *ngFor="let d of data">{{d || "NaN"}}</td>
@@ -22,36 +24,67 @@
   </div>
 
 
-  <div class="mainDiv" id="mainDiv2">
+  <div class="mainDiv animated fadeIn" id="mainDiv2">
     <div *ngIf="dataset" class="flex">
       <h1>Step 1</h1>
-      <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess2(3)"></i>
+      <input type="button" value="Next" class="button" (click)="dataProcess2(3)">
+      <!-- <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess2(3)"></i> -->
     </div>
     <hr>
-    <p>Removing columns with less information</p>
-    <table *ngIf="output1" #table>
+    <p>Removed columns with less information</p>
+    <table class="animated zoomIn" *ngIf="output1" id="table1">
       <th *ngFor="let heading of output1.columns">{{heading}}</th>
       <tr *ngFor="let data of output1.data">
         <td *ngFor="let d of data">{{d || "NaN"}}</td>
       </tr>
     </table>
-    <input *ngIf="output" type="button" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel()">
+    <input type="button" *ngIf="output1" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel('table1')">
   </div>
 
-  <div class="mainDiv3" id="mainDiv3">
+  <div class="mainDiv animated fadeIn" id="mainDiv3">
     <div class="flex">
       <h1>Step 2</h1>
-      <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess3(4)"></i>
+      <input type="button" value="Next" class="button" (click)="ExportToExcel('table2')">
+      <!-- <i class="fa fa-arrow-right" aria-hidden="true" (click)="ExportToExcel('table2')"></i> -->
     </div>
     <hr>
-    <p>Removing unnecessary Rows</p>
-    <table *ngIf="output2" #table>
+    <p>Removed unnecessary Rows</p>
+    <table class="animated zoomIn" *ngIf="output2" id="table2">
       <th *ngFor="let heading of output2.columns[0]">{{heading}}</th>
       <tr *ngFor="let data of output2.data[0]">
         <td *ngFor="let d of data">{{d || "NaN"}}</td>
       </tr>
     </table>
-    <input *ngIf="output2" type="button" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel()">
+    <input type="button" *ngIf="output2" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel('table2')">
+  </div>
+
+  <div class="mainDiv animated fadeIn" id="mainDiv4">
+    <div class="flex">
+      <h1>Step 3</h1>
+      <input type="button" value="Next" class="button" (click)="dataProcess4(5)">
+      <!-- <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess4(5)"></i> -->
+    </div>
+    <hr>
+    <p>Identifying numerical values</p>
+
+    <!-- <table class="animated zoomIn" *ngIf="output3" id="table3"> -->
+    <p class="pos animated zoomIn" *ngIf="output3">Identified 25 values</p>
+    <!-- </table> -->
+    <input type="button" *ngIf="output3" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel('table3')">
+  </div>
+
+  <div class="mainDiv animated fadeIn" id="mainDiv5">
+    <div class="flex">
+      <h1>Step 4</h1>
+      <input type="button" value="Next" class="button" (click)="dataProcess5(6)">
+      <!-- <i class="fa fa-arrow-right" aria-hidden="true" (click)="dataProcess5(6)"></i> -->
+    </div>
+    <hr>
+    <p>Filling missing Values</p>
+    <table class="animated zoomIn" *ngIf="output4" id="table4">
+      <p>working</p>
+    </table>
+    <input type="button" *ngIf="output4" class="btn btn-info btn-lg" value="Export" (click)="ExportToExcel('table4')">
   </div>
 
 </div>
